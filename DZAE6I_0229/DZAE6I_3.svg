@@ -36,51 +36,87 @@
   <defs
      id="defs1">
     <linearGradient
-       id="linearGradient7"
+       id="linearGradient11"
        inkscape:collect="always">
       <stop
-         style="stop-color:#2b0000;stop-opacity:1;"
-         offset="0"
-         id="stop7" />
+         style="stop-color:#ffd42a;stop-opacity:1;"
+         offset="0.31297863"
+         id="stop11" />
       <stop
-         style="stop-color:#2b0000;stop-opacity:0;"
+         style="stop-color:#ffd42a;stop-opacity:0;"
+         offset="0.99000001"
+         id="stop12" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient9"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#ff6600;stop-opacity:1;"
+         offset="0.39485776"
+         id="stop9" />
+      <stop
+         style="stop-color:#ff6600;stop-opacity:0;"
          offset="1"
-         id="stop8" />
+         id="stop10" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient7"
-       id="linearGradient8"
-       x1="133.10419"
-       y1="110.25729"
-       x2="131.58089"
-       y2="26.925081"
+       xlink:href="#linearGradient9"
+       id="linearGradient10"
+       x1="87.67527"
+       y1="106.85424"
+       x2="139.91513"
+       y2="105.7583"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient11"
+       id="linearGradient12"
+       x1="95.030144"
+       y1="106.25373"
+       x2="132.3092"
+       y2="107.073"
        gradientUnits="userSpaceOnUse"
-       spreadMethod="pad" />
+       gradientTransform="translate(-244.69315,-111.15224)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient9"
+       id="linearGradient13"
+       gradientUnits="userSpaceOnUse"
+       x1="87.67527"
+       y1="106.85424"
+       x2="139.91513"
+       y2="105.7583"
+       gradientTransform="matrix(0.51832462,0,0,0.51832462,-153.43147,-159.70858)" />
   </defs>
-  <g
-     inkscape:groupmode="layer"
-     id="layer2"
-     inkscape:label="Réteg 2">
-    <rect
-       style="fill:url(#linearGradient8);stroke-width:0.365481"
-       id="rect2-6"
-       width="36.16605"
-       height="69.009476"
-       x="115.65874"
-       y="42.766884"
-       transform="matrix(1,0,-0.53995471,0.84169407,0,0)" />
-  </g>
   <g
      inkscape:label="Réteg 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <rect
-       style="fill:#ff0000;stroke-width:0.264583"
-       id="rect2"
-       width="36.16605"
-       height="36.16605"
-       x="55.527676"
-       y="58.450184" />
+    <circle
+       style="fill:url(#linearGradient10);stroke-width:0.264583"
+       id="path8"
+       cx="99.547966"
+       cy="106.85424"
+       r="34.887455" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Réteg 2">
+    <circle
+       style="fill:url(#linearGradient12);stroke-width:0.181468"
+       id="path8-2"
+       cx="-145.36696"
+       cy="-4.8985076"
+       r="23.928045"
+       transform="rotate(-135)" />
+    <circle
+       style="fill:url(#linearGradient13);stroke-width:0.13714"
+       id="path8-3"
+       cx="-101.83331"
+       cy="-104.32339"
+       r="18.083027"
+       transform="rotate(-178.82286)" />
   </g>
 </svg>
