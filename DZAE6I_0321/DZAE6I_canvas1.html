@@ -45,14 +45,44 @@
                 40
             );
 
+            context.fillStyle = 'red';
+            context.fillRect(20, 60, 200, 100);
+
             const image = new Image();
             image.src = 'the.png';
             image.onload = function() {
-                context.drawImage(image, 20, 60);
+                context.drawImage(
+                    image,
+                    canvas.width - 100,
+                    canvas.height - 100 * (image.height / image.width),
+                    100,
+                    100 * (image.height / image.width)
+                );
             };
 
-            /*context.fillStyle = 'white';
-            context.fillRect(50, 50, 200, 100);*/
+            context.fillStyle = 'white';
+            context.strokeStyle = 'blue';
+            context.lineWidth = 5;
+            context.fillRect(20, 200, 200, 100);
+            context.strokeRect(20, 200, 200, 100);
+
+            const radius = 100;
+            context.beginPath();
+            context.arc(350, 200, radius, 0, 2 * Math.PI, false);
+            context.fillStyle = 'yellow';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'blue';
+            context.stroke();
+
+            const context2 = canvas.getContext('2d');
+            context2.save();
+            //context2.translate(350 + 200 / 2, 60 + 300 / 2);
+            context2.rotate(-20 * Math.PI / 180);
+            //context2.fillStyle = 'red';
+            context2.fillStyle = 'white';
+            context2.fillRect(300, 210, 100, 200);
+            context2.restore();
         });
     </script>
 
