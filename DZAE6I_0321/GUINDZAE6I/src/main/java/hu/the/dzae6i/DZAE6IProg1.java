@@ -17,7 +17,9 @@ public class DZAE6IProg1 extends JFrame {
         
         //DZAE6IProg6 prog = new DZAE6IProg6();
         
-        DZAE6IProg7 object = new DZAE6IProg7();
+        //DZAE6IProg7 object = new DZAE6IProg7();
+        
+        DZAE6IProg8 object = new DZAE6IProg8();
         
         object.display();
     }
