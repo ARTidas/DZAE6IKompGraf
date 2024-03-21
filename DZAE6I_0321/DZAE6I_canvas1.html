@@ -45,7 +45,15 @@
                 40
             );
 
-            context.fillStyle = 'red';
+            //Gradient fill
+            //const gradient = context.createRadialGradient(120, 110, 20, 120, 110, 80);
+            const gradient = context.createRadialGradient(100, 100, 20, 120, 110, 80);
+            gradient.addColorStop(0, 'orange');
+            gradient.addColorStop(0.5, 'blue');
+            //gradient.addColorStop(1, 'green');
+            gradient.addColorStop(1, '#0f0');
+
+            context.fillStyle = gradient;
             context.fillRect(20, 60, 200, 100);
 
             const image = new Image();
