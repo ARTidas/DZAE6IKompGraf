@@ -7,6 +7,7 @@ public class LWJGLDZAE6I {
         //System.out.println(org.lwjgl.Version.getVersion());
         
         SimpleGame.main(args);
+        //TODO: Watch and learn: LWJGL Textures
         //HelloWorld.main(args);
     }
 }
