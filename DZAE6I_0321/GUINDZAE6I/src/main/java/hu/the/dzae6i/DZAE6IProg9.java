@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class DZAE6IProg9 extends JFrame {
 
     public DZAE6IProg9() {
-        setTitle("GUI Example");
+        setTitle("DZAE6I");
         setSize(250, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());

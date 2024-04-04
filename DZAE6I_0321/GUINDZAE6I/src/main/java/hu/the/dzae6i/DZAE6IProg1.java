@@ -22,11 +22,11 @@ public class DZAE6IProg1 extends JFrame {
         //DZAE6IProg8 object = new DZAE6IProg8();
         //object.display();
         
-        //DZAE6IProg9 prog = new DZAE6IProg9();
+        DZAE6IProg9 prog = new DZAE6IProg9();
         
         //DZAE6IProg10 prog = new DZAE6IProg10();
         
-        DZAE6IProg11 prog = new DZAE6IProg11();
+        //DZAE6IProg11 prog = new DZAE6IProg11();
     }
     
     public void display() {
