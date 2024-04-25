@@ -34,27 +34,18 @@
             const canvas_width      = canvas.width;
             const canvas_height     = canvas.height;
             const logo_color        = '#bbb'
+            const text_color        = '#333'
+            const circle_width      = (canvas.width / 14); // With 700px canvas width, it will be 50px
             
             // Clear the canvas
             context.clearRect(0, 0, canvas_width, canvas_height);
-
-            // Text
-            const font_size_px = 24;
-            context.font = `bold ${font_size_px}px Courier`;
-            context.fillStyle = logo_color;
-            context.textAlign = 'center';
-            context.textBaseline = 'bottom';
-            const text = 'University of Tokaj - Computer Science';
-            const text_x = canvas_width / 2;
-            const text_y = canvas_height - font_size_px;
-            context.fillText(text, text_x, text_y);
 
             // Circle
             context.beginPath();
             context.arc(
                 (canvas_width / 2),
                 (canvas_height / 2),
-                50,
+                circle_width,
                 0,
                 Math.PI * 2
             );
@@ -62,9 +53,34 @@
             context.fill();
 
             // Triangle
+            context.beginPath();
+            context.moveTo(canvas_width / 2 - circle_width, canvas_height / 2);
+            context.lineTo(canvas_width / 2 + circle_width, canvas_height / 2);
+            context.lineTo(canvas_width / 2, canvas_height);
+            context.closePath();
+            context.fillStyle = logo_color;
+            context.fill();
 
             // Piece of wing
+            
             // Full wing mirrored on other side of the canvas
+
+            // Text line 1
+            const font_size_px = 24;
+            context.font = `bold ${font_size_px}px Courier`;
+            context.fillStyle = text_color;
+            context.textAlign = 'center';
+            context.textBaseline = 'bottom';
+            let text = 'University of Tokaj';
+            let text_x = canvas_width / 2;
+            let text_y = font_size_px * 2;
+            context.fillText(text, text_x, text_y);
+
+            // Text line 2
+            text = 'Drone Technology Research Center';
+            text_x = canvas_width / 2;
+            text_y = canvas_height - font_size_px * 2;
+            context.fillText(text, text_x, text_y);
         });
     </script>
 
