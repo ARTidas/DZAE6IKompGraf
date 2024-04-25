@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <title>Logo</title>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="content-type" content="text/html" />
+    <meta name="description" content="Logo" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <header>
+        <h1>Logo - DZAE6I</h1>
+    </header>
+
+    <section class="container">
+        <canvas id="canvas" width="700" height="350"></canvas>
+    </section>
+
+    <style>
+        #canvas {
+            border: 1px solid #000;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas            = document.getElementById('canvas');
+            const context           = canvas.getContext('2d');
+            const canvas_width      = canvas.width;
+            const canvas_height     = canvas.height;
+            const logo_color        = '#bbb'
+            
+            // Clear the canvas
+            context.clearRect(0, 0, canvas_width, canvas_height);
+
+            // Text
+            const font_size_px = 24;
+            context.font = `bold ${font_size_px}px Courier`;
+            context.fillStyle = logo_color;
+            context.textAlign = 'center';
+            context.textBaseline = 'bottom';
+            const text = 'University of Tokaj - Computer Science';
+            const text_x = canvas_width / 2;
+            const text_y = canvas_height - font_size_px;
+            context.fillText(text, text_x, text_y);
+
+            // Circle
+            context.beginPath();
+            context.arc(
+                (canvas_width / 2),
+                (canvas_height / 2),
+                50,
+                0,
+                Math.PI * 2
+            );
+            context.fillStyle = logo_color;
+            context.fill();
+
+            // Triangle
+
+            // Piece of wing
+            // Full wing mirrored on other side of the canvas
+        });
+    </script>
+
+</body>
+</html>
