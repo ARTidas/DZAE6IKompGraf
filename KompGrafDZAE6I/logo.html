@@ -61,14 +61,38 @@
             context.fillStyle = logo_color;
             context.fill();
 
-            // One wing
-            context.beginPath();
-            context.moveTo(canvas_width / 2 + circle_width * 1.4, canvas_height / 2);
-            context.lineTo(canvas_width - circle_width * 1.4, circle_width * 1.4);
-            context.strokeStyle = logo_color;
-            context.lineWidth = circle_width / 2;
-            context.lineCap = 'round';
-            context.stroke();
+            // Right wing
+            for (let i = 0; i < 3; i++) {
+                context.beginPath();
+                context.moveTo(
+                    canvas_width / 2 + circle_width * 1.4,
+                    canvas_height / 2 + circle_width / 3 - circle_width * i * 0.75
+                );
+                context.lineTo(
+                    canvas_width - circle_width * 1.4,
+                    circle_width * 1.4 + circle_width / 3 - circle_width * i * 0.75
+                );
+                context.strokeStyle = logo_color;
+                context.lineWidth = circle_width / 2;
+                context.lineCap = 'round';
+                context.stroke();
+            }
+
+            for (let i = 0; i < 3; i++) {
+                context.beginPath();
+                context.moveTo(
+                    canvas_width / 2 - circle_width * 1.4,
+                    canvas_height / 2 + circle_width / 3 - circle_width * i * 0.75
+                );
+                context.lineTo(
+                    circle_width * 1.4,
+                    circle_width * 1.4 + circle_width / 3 - circle_width * i * 0.75
+                );
+                context.strokeStyle = logo_color;
+                context.lineWidth = circle_width / 2;
+                context.lineCap = 'round';
+                context.stroke();
+            }
 
             // Full wing mirrored on other side of the canvas
 
