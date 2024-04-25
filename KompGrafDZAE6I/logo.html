@@ -19,12 +19,19 @@
     </header>
 
     <section class="container">
-        <canvas id="canvas" width="700" height="350"></canvas>
+        <canvas id="canvas"></canvas>
     </section>
 
     <style>
+        canvas {
+            border: 1px solid #000;
+        }
         #canvas {
             border: 1px solid #000;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            max-height: 200vw;
         }
     </style>
     <script>
@@ -35,7 +42,8 @@
             const canvas_height     = canvas.height;
             const logo_color        = '#bbb'
             const text_color        = '#333'
-            const circle_width      = (canvas.width / 14); // With 700px canvas width, it will be 50px
+            const circle_radius     = (canvas.width / 14); // With 700px canvas width, it will be 50px
+            const font_size_px      = (canvas.width / 20); // With 700px canvas width, it will be 35px
             
             // Clear the canvas
             context.clearRect(0, 0, canvas_width, canvas_height);
@@ -45,7 +53,7 @@
             context.arc(
                 (canvas_width / 2),
                 (canvas_height / 2),
-                circle_width,
+                circle_radius,
                 0,
                 Math.PI * 2
             );
@@ -54,9 +62,9 @@
 
             // Triangle
             context.beginPath();
-            context.moveTo(canvas_width / 2 - circle_width, canvas_height / 2);
-            context.lineTo(canvas_width / 2 + circle_width, canvas_height / 2);
-            context.lineTo(canvas_width / 2, canvas_height - circle_width * 0.6);
+            context.moveTo(canvas_width / 2 - circle_radius, canvas_height / 2);
+            context.lineTo(canvas_width / 2 + circle_radius, canvas_height / 2);
+            context.lineTo(canvas_width / 2, canvas_height - circle_radius * 0.6);
             context.closePath();
             context.fillStyle = logo_color;
             context.fill();
@@ -65,15 +73,15 @@
             for (let i = 0; i < 3; i++) {
                 context.beginPath();
                 context.moveTo(
-                    canvas_width / 2 + circle_width * 1.4,
-                    canvas_height / 2 + circle_width / 3 - circle_width * i * 0.75
+                    canvas_width / 2 + circle_radius * 1.4,
+                    canvas_height / 2 + circle_radius / 3 - circle_radius * i * 0.75
                 );
                 context.lineTo(
-                    canvas_width - circle_width * 1.4,
-                    circle_width * 1.4 + circle_width / 3 - circle_width * i * 0.75
+                    canvas_width - circle_radius * 1.4,
+                    circle_radius * 1.4 + circle_radius / 3 - circle_radius * i * 0.75
                 );
                 context.strokeStyle = logo_color;
-                context.lineWidth = circle_width / 2;
+                context.lineWidth = circle_radius / 2;
                 context.lineCap = 'round';
                 context.stroke();
             }
@@ -82,21 +90,20 @@
             for (let i = 0; i < 3; i++) {
                 context.beginPath();
                 context.moveTo(
-                    canvas_width / 2 - circle_width * 1.4,
-                    canvas_height / 2 + circle_width / 3 - circle_width * i * 0.75
+                    canvas_width / 2 - circle_radius * 1.4,
+                    canvas_height / 2 + circle_radius / 3 - circle_radius * i * 0.75
                 );
                 context.lineTo(
-                    circle_width * 1.4,
-                    circle_width * 1.4 + circle_width / 3 - circle_width * i * 0.75
+                    circle_radius * 1.4,
+                    circle_radius * 1.4 + circle_radius / 3 - circle_radius * i * 0.75
                 );
                 context.strokeStyle = logo_color;
-                context.lineWidth = circle_width / 2;
+                context.lineWidth = circle_radius / 2;
                 context.lineCap = 'round';
                 context.stroke();
             }
 
             // Text line 1
-            const font_size_px = 24;
             context.font = `bold ${font_size_px}px Courier`;
             context.fillStyle = text_color;
             context.textAlign = 'center';
