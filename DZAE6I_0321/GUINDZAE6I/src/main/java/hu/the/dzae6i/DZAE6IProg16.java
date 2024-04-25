@@ -40,6 +40,44 @@ public class DZAE6IProg16 extends JFrame {
         
         g2d.fillArc(150, 120, 35, 35, 180, 70);
         g2d.fillArc(160, 120, 35, 35, -90, 70);
+        
+        int slices = 20;
+        for (int i = 0; i < slices; i++) {
+            if (i % 2 == 0) {
+                g2d.fillArc(
+                    20, 
+                    160, 
+                    35, 
+                    35, 
+                    (i * (360 / slices)),
+                    (360 / slices)
+                );
+            }
+        }
+        for (int i = 0; i < slices; i++) {
+            if (i % 2 == 0) {
+                g2d.fillArc(
+                    70, 
+                    160, 
+                    35, 
+                    50, 
+                    (i * (360 / slices)),
+                    (360 / slices)
+                );
+            }
+        }
+        for (int i = 0; i < slices; i++) {
+            if (i % 2 == 0 && i > (slices / 3) * 2) {
+                g2d.fillArc(
+                    150, 
+                    160, 
+                    35, 
+                    50, 
+                    (i * (360 / slices)),
+                    (360 / slices)
+                );
+            }
+        }
     }
     
     public static void main(String[] args) {
