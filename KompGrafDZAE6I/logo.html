@@ -56,13 +56,20 @@
             context.beginPath();
             context.moveTo(canvas_width / 2 - circle_width, canvas_height / 2);
             context.lineTo(canvas_width / 2 + circle_width, canvas_height / 2);
-            context.lineTo(canvas_width / 2, canvas_height);
+            context.lineTo(canvas_width / 2, canvas_height - circle_width * 0.6);
             context.closePath();
             context.fillStyle = logo_color;
             context.fill();
 
-            // Piece of wing
-            
+            // One wing
+            context.beginPath();
+            context.moveTo(canvas_width / 2 + circle_width * 1.4, canvas_height / 2);
+            context.lineTo(canvas_width - circle_width * 1.4, circle_width * 1.4);
+            context.strokeStyle = logo_color;
+            context.lineWidth = circle_width / 2;
+            context.lineCap = 'round';
+            context.stroke();
+
             // Full wing mirrored on other side of the canvas
 
             // Text line 1
