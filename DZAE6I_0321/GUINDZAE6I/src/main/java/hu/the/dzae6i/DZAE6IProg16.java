@@ -30,11 +30,16 @@ public class DZAE6IProg16 extends JFrame {
         g2d.fillOval(70, 40, 50, 35);
         g2d.fillOval(150, 40, 35, 35);
         
-        // Quarter circle 1
-        g2d.fillOval(20, 120, 35, 35);
+        // Quarter circles
+        /*g2d.fillOval(20, 120, 35, 35);
         g2d.setColor(Color.BLACK);
         g2d.fillRect(20, 120, 35 / 2, 35);
-        g2d.fillRect(20, 120 + (35 / 2), 35, 35 / 2);
+        g2d.fillRect(20, 120 + (35 / 2), 35, 35 / 2);*/
+        g2d.fillArc(20, 120, 35, 35, 0, 90);
+        g2d.fillArc(70, 120, 35, 35, 90, 90);
+        
+        g2d.fillArc(150, 120, 35, 35, 180, 70);
+        g2d.fillArc(160, 120, 35, 35, -90, 70);
     }
     
     public static void main(String[] args) {
