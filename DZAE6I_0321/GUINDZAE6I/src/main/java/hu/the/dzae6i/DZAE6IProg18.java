@@ -13,20 +13,21 @@ public class DZAE6IProg18 extends JFrame implements ActionListener {
     public DZAE6IProg18() {
         setTitle("PTI");
         setSize(500, 500);
-        //getContentPane().setBackground(Color.WHITE);
+        getContentPane().setBackground(Color.WHITE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER));
         
         JButton buttonDraw = new JButton("Draw");
         buttonDraw.addActionListener(this);
-        getContentPane().add(buttonDraw, BorderLayout.SOUTH);
+        getContentPane().add(buttonDraw);
         
         JButton buttonBackGroundColor = new JButton("SetBackgroundColor");
         buttonBackGroundColor.addActionListener(this);
-        getContentPane().add(buttonBackGroundColor, BorderLayout.SOUTH);
+        getContentPane().add(buttonBackGroundColor);
         
         JButton buttonDrawColor = new JButton("SetLineColor");
         buttonDrawColor.addActionListener(this);
-        getContentPane().add(buttonDrawColor, BorderLayout.SOUTH);
+        getContentPane().add(buttonDrawColor);
         
         setVisible(true);
     }
@@ -37,16 +38,29 @@ public class DZAE6IProg18 extends JFrame implements ActionListener {
         Graphics2D g2d = (Graphics2D) g;
         
         // White rectangle as a background
-        g2d.setColor(Color.WHITE);
-        g2d.fillRect(0, 0, getWidth(), getHeight());
+        /*g2d.setColor(Color.WHITE);
+        g2d.fillRect(0, 0, getWidth(), getHeight());*/
 
-        
         
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
+        switch (e.getActionCommand()) {
+            case "Draw":
+                break;
+            case "Set Background Color":
+                backgroundColor = JColorChooser.showDialog(this, "Choose Color", backgroundColor);
+                break;
+            case "Set Line Color":
+                drawColor = JColorChooser.showDialog(this, "Choose Color", drawColor);
+                break;
+            default:
+                break;
+        }
+
+        repaint();
     }
     
     public static void main(String[] args) {
