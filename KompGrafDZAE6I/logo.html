@@ -11,8 +11,6 @@
     <meta http-equiv="expires" content="0" />
     <meta http-equiv="pragma" content="no-cache" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <script src="jquery.js"></script>
 </head>
 <body>
 
@@ -43,16 +41,23 @@
         document.addEventListener('DOMContentLoaded', function() {
 
             const canvas        = document.getElementById('canvas');
-            const canvas_jq     = $('#canvas');
 
+            // This solution requires JQuery
+            // https://teamtreehouse.com/community/saving-canvas-as-image-jquery
+            /*const canvas_jq     = $('#canvas');
             $('#save').click(function() {
-                //https://teamtreehouse.com/community/saving-canvas-as-image-jquery
                 const data_url = canvas_jq[0].toDataURL('image/png');
                 const w = window.open('about:blank', 'image from canvas');
                 w.document.write(`<img src='"${data_url}"' alt="logo from canvas"/>`);
-            });
+            });*/
 
-            
+            const save = document.getElementById('save');
+            save.addEventListener('click', function() {
+                const link = document.createElement('a');
+                link.download = 'logo.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
 
             const context           = canvas.getContext('2d');
             const canvas_width      = canvas.width;
