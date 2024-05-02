@@ -1,10 +1,11 @@
 package hu.the.dzae6i;
 
+import java.io.IOException;
 import javax.swing.JFrame;
 
 public class DZAE6IProg1 extends JFrame {
     
-    public static void main(String[] args) {        
+    public static void main(String[] args) throws IOException {        
         //display();
         
         //DZAE6IProg2 object = new DZAE6IProg2();
@@ -40,7 +41,9 @@ public class DZAE6IProg1 extends JFrame {
         
         //DZAE6IProg17 prog = new DZAE6IProg17();
         
-        DZAE6IProg18 prog = new DZAE6IProg18();
+        //DZAE6IProg18 prog = new DZAE6IProg18();
+        
+        DZAE6I_Kepek prog = new DZAE6I_Kepek();
     }
     
     public void display() {
