@@ -1,9 +1,13 @@
 package hu.the.dzae6i;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -13,16 +17,14 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-public class DZAE6I_Kepek extends JFrame {
+public class DZAE6I_2DGrafika extends JFrame {
     BufferedImage image;
-    int image_width = 300;
-    int image_height = 400;
 
-    public DZAE6I_Kepek() throws IOException {
+    public DZAE6I_2DGrafika() throws IOException {
         setTitle("PTI");
-        setSize((int) Math.round(this.image_width * 1.75), this.image_height);
+        setSize(500, 500);
         setLayout(new FlowLayout());
-        getContentPane().setBackground(Color.GRAY);
+        getContentPane().setBackground(Color.LIGHT_GRAY);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         this.image = ImageIO.read(new File("C:\\VZGit\\DZAE6IKompGraf\\DZAE6I_0321\\GUINDZAE6I\\src\\main\\java\\hu\\the\\dzae6i\\unithe2.jpg"));
@@ -36,28 +38,38 @@ public class DZAE6I_Kepek extends JFrame {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         
-        g2d.drawImage(
-            image, 
-            0,
-            20,
-            (int) Math.round(this.image_width * 0.25),
-            (int) Math.round(this.image_height * 0.25),
-            this
+        //g2d.setColor(Color.RED);
+        /*GradientPaint gradient = new GradientPaint(
+            250,
+            250,
+            Color.YELLOW,
+            260, 
+            260, 
+            Color.BLUE
+        );*/
+        Point2D.Float p1 = new Point2D.Float(250.f, 250.f);
+        Point2D.Float p2 = new Point2D.Float(260.f, 260.f);
+        GradientPaint gradient = new GradientPaint(
+            p1,
+            Color.YELLOW,
+            p2,
+            Color.BLUE,
+            true
         );
+        g2d.setPaint(gradient);
+        g2d.fillArc(20, 250, 400, 200, 90, 180);
+        
+        g2d.setColor(Color.RED);
+        g2d.setFont(new Font("TimesRoman", Font.BOLD, 30));
+        g2d.drawString("Tokaj-Hegyalja Egyetem", 50, 250);
+        
+        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
         g2d.drawImage(
             image, 
-            (int) Math.round(this.image_width * 0.25),
-            20,
-            (int) Math.round(this.image_width * 0.5),
-            (int) Math.round(this.image_height * 0.5),
-            this
-        );
-        g2d.drawImage(
-            image, 
-            (int) Math.round(this.image_width * 0.5) + (int) Math.round(this.image_width * 0.25),
-            20,
-            (int) Math.round(this.image_width),
-            (int) Math.round(this.image_height),
+            100,
+            100,
+            150,
+            200,
             this
         );
     }
@@ -67,7 +79,7 @@ public class DZAE6I_Kepek extends JFrame {
             @Override
             public void run() {
                 try {
-                    DZAE6I_Kepek dzaE6I_Kepek = new DZAE6I_Kepek();
+                    DZAE6I_2DGrafika dzae6i_2dgrafika = new DZAE6I_2DGrafika();
                 }
                 catch (IOException ex) {
                     Logger.getLogger(DZAE6I_Kepek.class.getName()).log(Level.SEVERE, null, ex);
