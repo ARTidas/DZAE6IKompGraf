@@ -57,10 +57,10 @@ public class KomGrafDZAE6I extends JFrame {
             );
             g2d.drawImage(
                 image, 
-                (int) ((CANVAS_WIDTH / 2) - (CANVAS_WIDTH / 5 / 2)), 
-                (int) (CANVAS_HEIGHT / 15),
-                (int) (CANVAS_WIDTH / 5),
-                (int) (CANVAS_HEIGHT / 5),
+                (int) (10), //(int) ((CANVAS_WIDTH / 2) - (CANVAS_WIDTH / 5 / 2)),
+                (int) ((CANVAS_HEIGHT) - (CANVAS_HEIGHT / 3.5) - 10),
+                (int) (CANVAS_WIDTH / 3.5),
+                (int) (CANVAS_HEIGHT / 3.5),
                 null
             );
             
