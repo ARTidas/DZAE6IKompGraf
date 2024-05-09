@@ -3,13 +3,22 @@ package hu.the.dzae6i;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.text.BadLocationException;
 
 public class DZAE6I_Szamologep extends JFrame {
+    
+    private Float input_a;
+    private Float input_b;
+    private String operand;
     
     public DZAE6I_Szamologep() {
         setTitle("Calculator - DZAE6I");
@@ -83,6 +92,163 @@ public class DZAE6I_Szamologep extends JFrame {
         button_dec.setFont(button_font);
         button_sig.setFont(button_font);
         button_equ.setFont(button_font);
+        
+        
+        button_1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calculator_input.setText(calculator_input.getText() + "1");
+            }
+        });
+        button_2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calculator_input.setText(calculator_input.getText() + "2");
+            }
+        });
+        button_3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calculator_input.setText(calculator_input.getText() + "3");
+            }
+        });
+        button_4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calculator_input.setText(calculator_input.getText() + "4");
+            }
+        });
+        button_5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calculator_input.setText(calculator_input.getText() + "5");
+            }
+        });
+        button_6.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calculator_input.setText(calculator_input.getText() + "6");
+            }
+        });
+        button_7.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calculator_input.setText(calculator_input.getText() + "7");
+            }
+        });
+        button_8.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calculator_input.setText(calculator_input.getText() + "8");
+            }
+        });
+        button_9.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calculator_input.setText(calculator_input.getText() + "9");
+            }
+        });
+        button_0.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calculator_input.setText(calculator_input.getText() + "0");
+            }
+        });
+        button_cle.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calculator_input.setText("");
+            }
+        });
+        button_dec.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calculator_input.setText(calculator_input.getText() + ".");
+            }
+        });
+        
+        button_add.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                input_a = Float.valueOf(calculator_input.getText());
+                operand = "+";
+                calculator_input.setText("");
+            }
+        });
+        button_sub.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                input_a = Float.valueOf(calculator_input.getText());
+                operand = "-";
+                calculator_input.setText("");
+            }
+        });
+        button_mul.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                input_a = Float.valueOf(calculator_input.getText());
+                operand = "*";
+                calculator_input.setText("");
+            }
+        });
+        button_div.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                input_a = Float.valueOf(calculator_input.getText());
+                operand = "/";
+                calculator_input.setText("");
+            }
+        });
+        
+        button_equ.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    if (
+                        calculator_input.getText().substring(0, 1).equals("-")
+                    ) {
+                        calculator_input.setText(
+                            calculator_input.getText().substring(
+                                1,
+                                calculator_input.getText().length()
+                            )
+                        );
+                    }
+                    else {
+                        calculator_input.setText("-" + calculator_input.getText());
+                    }
+                }
+                catch (BadLocationException exception) {
+                    Logger.getLogger(DZAE6I_Szamologep.class.getName()).log(Level.SEVERE, null, exception);
+                }
+            }
+        });
+        
+        button_equ.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                input_b = Float.valueOf(calculator_input.getText());
+                
+                switch(operand) {
+                    case "+":
+                        calculator_input.setText(String.valueOf(input_a + input_b));
+                        break;
+                    case "-":
+                        calculator_input.setText(String.valueOf(input_a - input_b));
+                        break;
+                    case "*":
+                        calculator_input.setText(String.valueOf(input_a * input_b));
+                        break;
+                    case "/":
+                        calculator_input.setText(String.valueOf(input_a / input_b));
+                        break;
+                    default:
+                        calculator_input.setText("Invalid operand");
+                }
+            }
+        });
+        
+        
                 
         row_1.add(calculator_input);
         
