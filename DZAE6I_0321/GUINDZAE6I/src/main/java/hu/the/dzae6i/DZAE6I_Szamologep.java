@@ -200,26 +200,21 @@ public class DZAE6I_Szamologep extends JFrame {
             }
         });
         
-        button_equ.addActionListener(new ActionListener() {
+        button_sig.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    if (
-                        calculator_input.getText().substring(0, 1).equals("-")
-                    ) {
-                        calculator_input.setText(
+                if (calculator_input.getText().substring(0, 1).equals("-")) {
+                    //System.out.println("Negative sign found!");
+                    calculator_input.setText(
                             calculator_input.getText().substring(
-                                1,
-                                calculator_input.getText().length()
+                                    1,
+                                    calculator_input.getText().length()
                             )
-                        );
-                    }
-                    else {
-                        calculator_input.setText("-" + calculator_input.getText());
-                    }
+                    );
                 }
-                catch (BadLocationException exception) {
-                    Logger.getLogger(DZAE6I_Szamologep.class.getName()).log(Level.SEVERE, null, exception);
+                else {
+                    //System.out.println("Negative sign not found!");
+                    calculator_input.setText("-" + calculator_input.getText());
                 }
             }
         });
