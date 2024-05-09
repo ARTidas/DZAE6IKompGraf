@@ -45,7 +45,9 @@ public class DZAE6IProg1 extends JFrame {
         
         //DZAE6I_Kepek prog = new DZAE6I_Kepek();
         
-        DZAE6I_2DGrafika prog = new DZAE6I_2DGrafika();
+        //DZAE6I_2DGrafika prog = new DZAE6I_2DGrafika();
+                
+        DZAE6I_Szamologep prog = new DZAE6I_Szamologep();
     }
     
     public void display() {
