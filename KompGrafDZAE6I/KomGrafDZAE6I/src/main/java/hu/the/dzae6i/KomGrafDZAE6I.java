@@ -13,6 +13,8 @@ public class KomGrafDZAE6I extends JFrame {
     private static final int CANVAS_HEIGHT  = 700;
     private static final int LINE_START_HEIGHT = 100;
     
+    private static Graphics2D g2d;
+    
     public KomGrafDZAE6I() {
         setTitle("Drawing fractals - Zoltan Veres (DZAE6I)");
         setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -20,12 +22,12 @@ public class KomGrafDZAE6I extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         setVisible(true);
+        g2d = (Graphics2D) getGraphics();
     }
     
     @Override
     public void paint(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-
+        super.paint(g);
         g2d.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
         int start_x = (int) (CANVAS_WIDTH / 2);
@@ -34,11 +36,23 @@ public class KomGrafDZAE6I extends JFrame {
         g2d.setColor(Color.BLACK);
         g2d.setStroke(new BasicStroke(3));
         
+        drawFractal(
+            start_x,
+            start_y,
+            LINE_START_HEIGHT
+        );
+    }
+    
+    private void drawFractal(
+        int start_x,
+        int start_y,
+        int length
+    ) {
         g2d.drawLine(
             start_x,
             start_y,
             start_x,
-            (start_y - LINE_START_HEIGHT)
+            (start_y - length)
         );
     }
     
