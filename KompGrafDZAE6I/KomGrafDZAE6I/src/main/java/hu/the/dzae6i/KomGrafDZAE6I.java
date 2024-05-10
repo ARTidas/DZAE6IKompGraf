@@ -37,13 +37,12 @@ public class KomGrafDZAE6I extends JFrame {
         int start_y = (int) (CANVAS_HEIGHT);
 
         g2d.setColor(Color.BLACK);
-        g2d.setStroke(new BasicStroke(3));
+        g2d.setStroke(new BasicStroke(2));
         
         drawFractal(
             start_x,
             start_y,
             LINE_START_HEIGHT,
-            0,
             0
         );
     }
@@ -52,29 +51,29 @@ public class KomGrafDZAE6I extends JFrame {
         int start_x,
         int start_y,
         int length,
-        int iteration,
-        int branch
+        int iteration
     ) {
         if (length < END_FACTOR || iteration > 100) {
             return;
         }
         
-        int next_x = (int) (start_x * Math.pow(SCALE_FACTOR, iteration));
-        
         for (int i = 0; i < BRANCH_COUNT; i++) {
+            double angle = (Math.PI * i) / BRANCH_COUNT;
+            int next_x = (int) (start_x + length * Math.cos(angle));
+            int next_y = start_y - length;
+            
             g2d.drawLine(
                 start_x,
                 start_y,
                 next_x,
-                (start_y - length)
+                next_y
             );
             
             drawFractal(
                 next_x,
-                (start_y - length),
+                next_y,
                 (int) (length * SCALE_FACTOR),
-                ++iteration,
-                i
+                ++iteration
             );
         }
         
