@@ -57,8 +57,8 @@ public class KomGrafDZAE6I extends JFrame {
             return;
         }
         
-        for (int i = 0; i < BRANCH_COUNT; i++) {
-            double angle = (Math.PI * i) / BRANCH_COUNT;
+        for (int i = 1; i <= BRANCH_COUNT; i++) {
+            double angle = (Math.PI / (BRANCH_COUNT + 1) * i);
             int next_x = (int) (start_x + length * Math.cos(angle));
             int next_y = start_y - length;
             
