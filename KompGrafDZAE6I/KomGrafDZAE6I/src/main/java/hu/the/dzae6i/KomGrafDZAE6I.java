@@ -41,30 +41,35 @@ public class KomGrafDZAE6I extends JFrame {
         drawFractal(
             start_x,
             start_y,
-            LINE_START_HEIGHT
+            LINE_START_HEIGHT,
+            0
         );
     }
     
     private void drawFractal(
         int start_x,
         int start_y,
-        int length
+        int length,
+        int iteration
     ) {
-        g2d.drawLine(
-            start_x,
-            start_y,
-            start_x,
-            (start_y - length)
-        );
-        
-        if (length < END_FACTOR) {
+        if (length < END_FACTOR || iteration > 100) {
             return;
         }
         
-        drawFractal(
+        int next_x = (int) (start_x * Math.pow(SCALE_FACTOR, iteration));
+        
+        g2d.drawLine(
             start_x,
+            start_y,
+            next_x,
+            (start_y - length)
+        );
+        
+        drawFractal(
+            next_x,
             (start_y - length),
-            (int) (length * SCALE_FACTOR)
+            (int) (length * SCALE_FACTOR),
+            ++iteration
         );
     }
     
