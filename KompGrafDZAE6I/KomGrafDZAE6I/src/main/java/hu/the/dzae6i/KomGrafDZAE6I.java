@@ -9,9 +9,11 @@ import javax.swing.SwingUtilities;
 
 public class KomGrafDZAE6I extends JFrame {
     
-    private static final int CANVAS_WIDTH   = 1400;
-    private static final int CANVAS_HEIGHT  = 700;
-    private static final int LINE_START_HEIGHT = 100;
+    private static final int CANVAS_WIDTH       = 1400;
+    private static final int CANVAS_HEIGHT      = 700;
+    private static final int LINE_START_HEIGHT  = 100;
+    private static final double SCALE_FACTOR    = 0.9;
+    private static final int END_FACTOR         = 50;
     
     private static Graphics2D g2d;
     
@@ -53,6 +55,16 @@ public class KomGrafDZAE6I extends JFrame {
             start_y,
             start_x,
             (start_y - length)
+        );
+        
+        if (length < END_FACTOR) {
+            return;
+        }
+        
+        drawFractal(
+            start_x,
+            (start_y - length),
+            (int) (length * SCALE_FACTOR)
         );
     }
     
