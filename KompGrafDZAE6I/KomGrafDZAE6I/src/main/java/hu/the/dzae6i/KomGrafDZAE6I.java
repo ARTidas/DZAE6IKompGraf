@@ -14,6 +14,7 @@ public class KomGrafDZAE6I extends JFrame {
     private static final int LINE_START_HEIGHT  = 100;
     private static final double SCALE_FACTOR    = 0.9;
     private static final int END_FACTOR         = 50;
+    private static final int BRANCH_COUNT       = 3;
     
     private static Graphics2D g2d;
     
@@ -42,6 +43,7 @@ public class KomGrafDZAE6I extends JFrame {
             start_x,
             start_y,
             LINE_START_HEIGHT,
+            0,
             0
         );
     }
@@ -50,7 +52,8 @@ public class KomGrafDZAE6I extends JFrame {
         int start_x,
         int start_y,
         int length,
-        int iteration
+        int iteration,
+        int branch
     ) {
         if (length < END_FACTOR || iteration > 100) {
             return;
@@ -58,19 +61,23 @@ public class KomGrafDZAE6I extends JFrame {
         
         int next_x = (int) (start_x * Math.pow(SCALE_FACTOR, iteration));
         
-        g2d.drawLine(
-            start_x,
-            start_y,
-            next_x,
-            (start_y - length)
-        );
+        for (int i = 0; i < BRANCH_COUNT; i++) {
+            g2d.drawLine(
+                start_x,
+                start_y,
+                next_x,
+                (start_y - length)
+            );
+            
+            drawFractal(
+                next_x,
+                (start_y - length),
+                (int) (length * SCALE_FACTOR),
+                ++iteration,
+                i
+            );
+        }
         
-        drawFractal(
-            next_x,
-            (start_y - length),
-            (int) (length * SCALE_FACTOR),
-            ++iteration
-        );
     }
     
     public static void main(String[] args) {
