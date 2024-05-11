@@ -11,17 +11,13 @@ public class KomGrafDZAE6I extends JFrame {
     
     private static final int CANVAS_WIDTH           = 1400;
     private static final int CANVAS_HEIGHT          = (CANVAS_WIDTH / 2);
-    private static final int MAX_ITERATION_DEPTH    = 15;
-    private static final int LINE_START_HEIGHT      = (CANVAS_HEIGHT / 5);
-    private static final double SCALE_FACTOR        = 0.9;
-    private static final int END_FACTOR             = (CANVAS_HEIGHT / 9);
-    private static final int BRANCH_COUNT           = 3;
-    /*
-    Math.PI     -> 0 degree
-    Math.PI / 2 -> 90 degree
-    */
-    private static final double ANGLE_FACTOR        = (Math.PI / BRANCH_COUNT);
-    private static final double ANGLE_DEVIATION     = Math.PI / 12;
+    private static final int MAX_ITERATION_DEPTH    = 16;
+    private static final int LINE_START_HEIGHT      = (CANVAS_HEIGHT / 10);
+    private static final double SCALE_FACTOR        = 0.98;
+    private static final int END_FACTOR             = (LINE_START_HEIGHT / 2);
+    private static final int BRANCH_COUNT           = 2;
+    private static final double ANGLE_FACTOR        = (Math.PI * 2 / BRANCH_COUNT);
+    private static final double ANGLE_DEVIATION     = (Math.PI * 2 / BRANCH_COUNT);
     
     private static Graphics2D g2d;
     
@@ -68,9 +64,10 @@ public class KomGrafDZAE6I extends JFrame {
         
         for (int i = 1; i <= BRANCH_COUNT; i++) {
             double angle = (
-                //branch_angle + (ANGLE_DEÍVIATION * Math.pow(-1, i))
-                //branch_angle + (ANGLE_FACTOR * Math.pow(-1, i))
-                branch_angle + (ANGLE_DEVIATION * i * Math.pow(-1, i))
+                branch_angle + 
+                ANGLE_DEVIATION *
+                (i) *
+                Math.pow(-1, i)
             );
             int next_x = (int) (start_x + length * Math.cos(angle));
             int next_y = start_y - length;
