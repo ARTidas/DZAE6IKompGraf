@@ -9,13 +9,18 @@ import javax.swing.SwingUtilities;
 
 public class KomGrafDZAE6I extends JFrame {
     
-    private static final int CANVAS_WIDTH       = 1400;
-    private static final int CANVAS_HEIGHT      = 700;
-    private static final int LINE_START_HEIGHT  = 100;
-    private static final double SCALE_FACTOR    = 0.9;
-    private static final int END_FACTOR         = 50;
-    private static final int BRANCH_COUNT       = 3;
-    private static final double ANGLE_FACTOR    = Math.PI / 12;
+    private static final int CANVAS_WIDTH           = 1400;
+    private static final int CANVAS_HEIGHT          = (CANVAS_WIDTH / 2);
+    private static final int MAX_ITERATION_DEPTH    = 15;
+    private static final int LINE_START_HEIGHT      = (CANVAS_HEIGHT / 5);
+    private static final double SCALE_FACTOR        = 0.9;
+    private static final int END_FACTOR             = (CANVAS_HEIGHT / 9);
+    private static final int BRANCH_COUNT           = 3;
+    /*
+    Math.PI     -> 0 degree
+    Math.PI / 2 -> 90 degree
+    */
+    private static final double ANGLE_FACTOR        = Math.PI / 2;
     
     private static Graphics2D g2d;
     
@@ -56,7 +61,7 @@ public class KomGrafDZAE6I extends JFrame {
         double branch_angle,
         int iteration
     ) {
-        if (length < END_FACTOR || iteration > 100) {
+        if (length < END_FACTOR || iteration > MAX_ITERATION_DEPTH) {
             return;
         }
         
