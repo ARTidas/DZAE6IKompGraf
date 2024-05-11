@@ -20,7 +20,8 @@ public class KomGrafDZAE6I extends JFrame {
     Math.PI     -> 0 degree
     Math.PI / 2 -> 90 degree
     */
-    private static final double ANGLE_FACTOR        = Math.PI / 2;
+    private static final double ANGLE_FACTOR        = (Math.PI / BRANCH_COUNT);
+    private static final double ANGLE_DEVIATION     = Math.PI / 12;
     
     private static Graphics2D g2d;
     
@@ -49,7 +50,7 @@ public class KomGrafDZAE6I extends JFrame {
             start_x,
             start_y,
             LINE_START_HEIGHT,
-            Math.PI / 2,
+            ANGLE_FACTOR,
             0
         );
     }
@@ -67,13 +68,9 @@ public class KomGrafDZAE6I extends JFrame {
         
         for (int i = 1; i <= BRANCH_COUNT; i++) {
             double angle = (
-                branch_angle + (
-                    ANGLE_FACTOR * (
-                        i - (
-                            (BRANCH_COUNT % 2 == 0 ? BRANCH_COUNT : BRANCH_COUNT + 1) / 2
-                        )
-                    )
-                )
+                //branch_angle + (ANGLE_DEÍVIATION * Math.pow(-1, i))
+                //branch_angle + (ANGLE_FACTOR * Math.pow(-1, i))
+                branch_angle + (ANGLE_DEVIATION * i * Math.pow(-1, i))
             );
             int next_x = (int) (start_x + length * Math.cos(angle));
             int next_y = start_y - length;
