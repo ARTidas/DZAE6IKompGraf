@@ -15,6 +15,7 @@ public class KomGrafDZAE6I extends JFrame {
     private static final double SCALE_FACTOR    = 0.9;
     private static final int END_FACTOR         = 50;
     private static final int BRANCH_COUNT       = 3;
+    private static final double ANGLE_FACTOR    = Math.PI / 12;
     
     private static Graphics2D g2d;
     
@@ -43,6 +44,7 @@ public class KomGrafDZAE6I extends JFrame {
             start_x,
             start_y,
             LINE_START_HEIGHT,
+            Math.PI / 2,
             0
         );
     }
@@ -51,6 +53,7 @@ public class KomGrafDZAE6I extends JFrame {
         int start_x,
         int start_y,
         int length,
+        double branch_angle,
         int iteration
     ) {
         if (length < END_FACTOR || iteration > 100) {
@@ -58,7 +61,15 @@ public class KomGrafDZAE6I extends JFrame {
         }
         
         for (int i = 1; i <= BRANCH_COUNT; i++) {
-            double angle = (Math.PI / (BRANCH_COUNT + 1) * i);
+            double angle = (
+                branch_angle + (
+                    ANGLE_FACTOR * (
+                        i - (
+                            (BRANCH_COUNT % 2 == 0 ? BRANCH_COUNT : BRANCH_COUNT + 1) / 2
+                        )
+                    )
+                )
+            );
             int next_x = (int) (start_x + length * Math.cos(angle));
             int next_y = start_y - length;
             
@@ -73,6 +84,7 @@ public class KomGrafDZAE6I extends JFrame {
                 next_x,
                 next_y,
                 (int) (length * SCALE_FACTOR),
+                angle,
                 ++iteration
             );
         }
