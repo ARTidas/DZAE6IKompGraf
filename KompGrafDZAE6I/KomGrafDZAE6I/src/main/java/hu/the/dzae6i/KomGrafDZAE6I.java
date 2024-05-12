@@ -7,6 +7,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
 import java.awt.image.BufferedImage;
+import java.awt.Stroke;
+import java.awt.BasicStroke;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -92,6 +94,23 @@ public class KomGrafDZAE6I extends JFrame {
                 (int) (CANVAS_HEIGHT * 0.4),
                 null
             );
+
+            // Separator lines
+            Stroke previous_stroke = g2d.getStroke();
+            g2d.setStroke(new BasicStroke(3));
+            g2d.drawLine(
+                0,
+                (int) (FONT_SIZE * 2.6),
+                CANVAS_WIDTH,
+                (int) (FONT_SIZE * 2.6)
+            );
+            g2d.drawLine(
+                0,
+                CANVAS_HEIGHT / 2,
+                CANVAS_WIDTH,
+                CANVAS_HEIGHT / 2
+            );
+            g2d.setStroke(previous_stroke);
 
             // Latest news
             g2d.setColor(COLOR);
