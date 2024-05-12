@@ -19,13 +19,13 @@ public class KomGrafDZAE6I extends JFrame {
     private static final int CANVAS_HEIGHT = 700;
     private static final int CANVAS_WIDTH = (int) (CANVAS_HEIGHT / 1.5);
     private static final String TABLOID_TITLE = "Drone Tabloid";
-    private static final String TABLOID_ISSUE = "1st";
+    private static final String TABLOID_ISSUE = "1st issue";
     private static final String TABLOID_OWNER = "Zoltan Veres (DZAE6I)";
     private static final Color COLOR = new Color(16, 16, 16);
     private static final int FONT_SIZE = (int) (CANVAS_WIDTH / 15);
     
     public KomGrafDZAE6I() {
-        setTitle(TABLOID_TITLE + " - " + TABLOID_ISSUE + " issue - " + TABLOID_OWNER);
+        setTitle(TABLOID_TITLE + " - " + TABLOID_ISSUE + " - " + TABLOID_OWNER);
         setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
         getContentPane().setBackground(Color.LIGHT_GRAY);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,17 +47,28 @@ public class KomGrafDZAE6I extends JFrame {
                 new File(
                     "KomGrafDZAE6I/src/main/java/hu/the/dzae6i/fonts/courier/CourierPrime-Bold.ttf"
                 )
-            ).deriveFont((float) FONT_SIZE);
+            );
+            Font title_font = custom_font.deriveFont((float) FONT_SIZE);
+            Font issue_font = custom_font.deriveFont((float) (FONT_SIZE * 0.5));
             
-            ge.registerFont(custom_font);
+            ge.registerFont(title_font);
 
             // Draw tabloid title
             g2d.setColor(COLOR);
-            g2d.setFont(custom_font);
+            g2d.setFont(title_font);
             g2d.drawString(
                 TABLOID_TITLE,
                 CANVAS_WIDTH / 2 - g2d.getFontMetrics().stringWidth(TABLOID_TITLE) / 2,
                 (int) (FONT_SIZE * 2.5)
+            );
+
+            // Draw tabloid issue
+            g2d.setColor(COLOR);
+            g2d.setFont(issue_font);
+            g2d.drawString(
+                TABLOID_ISSUE,
+                (int) (CANVAS_WIDTH - (g2d.getFontMetrics().stringWidth(TABLOID_ISSUE) * 1.2)),
+                (int) (FONT_SIZE * 1.7)
             );
 
             // Draw background image
