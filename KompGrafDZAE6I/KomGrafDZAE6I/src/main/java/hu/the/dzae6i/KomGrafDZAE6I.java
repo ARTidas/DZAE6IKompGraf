@@ -1,18 +1,18 @@
 package hu.the.dzae6i;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
-import java.awt.image.BufferedImage;
 import java.awt.Stroke;
-import java.awt.BasicStroke;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -151,6 +151,27 @@ public class KomGrafDZAE6I extends JFrame {
                 "- Sign up for our new drone pilot engineer classes.",
                 10,
                 (int) (CANVAS_HEIGHT / 2 + FONT_SIZE * 2.5)
+            );
+
+            // Logo drawing contest
+            // Logo title
+            int logo_section_x = (int) (CANVAS_HEIGHT / 2 + FONT_SIZE * 4);
+            g2d.setColor(COLOR);
+            g2d.setFont(title_font);
+            g2d.drawString(
+                "Logo drawing contest:",
+                10,
+                logo_section_x
+            );
+            // Logo
+            int circle_radius = (int) (CANVAS_WIDTH / 20);
+            Color logo_color = new Color(0, 100, 0);
+            g2d.setColor(logo_color);
+            g2d.fillOval(
+                (CANVAS_WIDTH / 2) - circle_radius,
+                (logo_section_x + (CANVAS_WIDTH / 5)) - circle_radius,
+                2 * circle_radius,
+                2 * circle_radius
             );
 
             // Draw tabloid owner
