@@ -16,13 +16,13 @@ import javax.swing.SwingUtilities;
 
 public class KomGrafDZAE6I extends JFrame {
 
-    private static final int CANVAS_HEIGHT = 700;
-    private static final int CANVAS_WIDTH = (int) (CANVAS_HEIGHT / 1.5);
-    private static final String TABLOID_TITLE = "Drone Tabloid";
-    private static final String TABLOID_ISSUE = "1st issue";
-    private static final String TABLOID_OWNER = "Zoltan Veres (DZAE6I)";
-    private static final Color COLOR = new Color(16, 16, 16);
-    private static final int FONT_SIZE = (int) (CANVAS_WIDTH / 15);
+    private static final int CANVAS_HEIGHT      = 700;
+    private static final int CANVAS_WIDTH       = (int) (CANVAS_HEIGHT / 1.5);
+    private static final String TABLOID_TITLE   = "Drone Tabloid";
+    private static final String TABLOID_ISSUE   = "1st issue";
+    private static final String TABLOID_OWNER   = "Zoltan Veres (DZAE6I)";
+    private static final Color COLOR            = new Color(16, 16, 16);
+    private static final int FONT_SIZE          = (int) (CANVAS_WIDTH / 15);
     
     public KomGrafDZAE6I() {
         setTitle(TABLOID_TITLE + " - " + TABLOID_ISSUE + " - " + TABLOID_OWNER);
@@ -42,14 +42,21 @@ public class KomGrafDZAE6I extends JFrame {
 
             // Create and register new TrueType font
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            Font custom_font = Font.createFont(
+            Font custom_bold_font = Font.createFont(
                 Font.TRUETYPE_FONT,
                 new File(
                     "KomGrafDZAE6I/src/main/java/hu/the/dzae6i/fonts/courier/CourierPrime-Bold.ttf"
                 )
             );
-            Font title_font = custom_font.deriveFont((float) FONT_SIZE);
+            Font custom_font = Font.createFont(
+                Font.TRUETYPE_FONT,
+                new File(
+                    "KomGrafDZAE6I/src/main/java/hu/the/dzae6i/fonts/courier/CourierPrime-Regular.ttf"
+                )
+            );
+            Font title_font = custom_bold_font.deriveFont((float) FONT_SIZE);
             Font issue_font = custom_font.deriveFont((float) (FONT_SIZE * 0.5));
+            Font news_font  = custom_font.deriveFont((float) (FONT_SIZE * 0.4));
             
             ge.registerFont(title_font);
 
@@ -84,6 +91,26 @@ public class KomGrafDZAE6I extends JFrame {
                 (int) (CANVAS_WIDTH),
                 (int) (CANVAS_HEIGHT * 0.4),
                 null
+            );
+
+            // Latest news
+            g2d.setColor(COLOR);
+            g2d.setFont(title_font);
+            g2d.drawString(
+                "Latest news",
+                10,
+                (int) (CANVAS_HEIGHT / 2 + FONT_SIZE)
+            );
+            g2d.setFont(news_font);
+            g2d.drawString(
+                "- The University of Tokaj started a new drone tabloid newslet.",
+                10,
+                (int) (CANVAS_HEIGHT / 2 + FONT_SIZE * 1.5)
+            );
+            g2d.drawString(
+                "- We have a new drone laboratory with 3D printers!",
+                10,
+                (int) (CANVAS_HEIGHT / 2 + FONT_SIZE * 2)
             );
         }
         catch (FontFormatException | IOException exception) {
