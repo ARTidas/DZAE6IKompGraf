@@ -11,13 +11,10 @@ public class KomGrafDZAE6I extends JFrame {
     
     private static final int CANVAS_WIDTH           = 1400;
     private static final int CANVAS_HEIGHT          = (CANVAS_WIDTH / 2);
-    private static final int MAX_ITERATION_DEPTH    = 16;
     private static final int LINE_START_HEIGHT      = (CANVAS_HEIGHT / 10);
-    private static final double SCALE_FACTOR        = 0.98;
-    private static final int END_FACTOR             = (LINE_START_HEIGHT / 2);
-    private static final int BRANCH_COUNT           = 2;
-    private static final double ANGLE_FACTOR        = (Math.PI * 2 / BRANCH_COUNT);
-    private static final double ANGLE_DEVIATION     = (Math.PI * 2 / BRANCH_COUNT);
+    private static final double SCALE_FACTOR        = 0.9;
+    private static final int END_FACTOR             = (int) (LINE_START_HEIGHT / 2);
+    private static final int BRANCH_COUNT           = 3;
     
     private static Graphics2D g2d;
     
@@ -34,7 +31,7 @@ public class KomGrafDZAE6I extends JFrame {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        g2d.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+        //g2d.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
         int start_x = (int) (CANVAS_WIDTH / 2);
         int start_y = (int) (CANVAS_HEIGHT);
@@ -45,33 +42,28 @@ public class KomGrafDZAE6I extends JFrame {
         drawFractal(
             start_x,
             start_y,
-            LINE_START_HEIGHT,
-            ANGLE_FACTOR,
-            0
+            LINE_START_HEIGHT
         );
     }
     
     private void drawFractal(
         int start_x,
         int start_y,
-        int length,
-        double branch_angle,
-        int iteration
+        int length
     ) {
-        if (length < END_FACTOR || iteration > MAX_ITERATION_DEPTH) {
+        if (length < END_FACTOR) {
             return;
         }
-        
+        int next_x = start_x;
+        int next_y = start_y - length;
+
         for (int i = 1; i <= BRANCH_COUNT; i++) {
-            double angle = (
-                branch_angle + 
-                ANGLE_DEVIATION *
-                (i) *
-                Math.pow(-1, i)
+            g2d.rotate(
+                Math.toRadians(360 / BRANCH_COUNT),
+                start_x,
+                start_y
             );
-            int next_x = (int) (start_x + length * Math.cos(angle));
-            int next_y = start_y - length;
-            
+
             g2d.drawLine(
                 start_x,
                 start_y,
@@ -82,9 +74,7 @@ public class KomGrafDZAE6I extends JFrame {
             drawFractal(
                 next_x,
                 next_y,
-                (int) (length * SCALE_FACTOR),
-                angle,
-                ++iteration
+                (int) (length * SCALE_FACTOR)
             );
         }
         
