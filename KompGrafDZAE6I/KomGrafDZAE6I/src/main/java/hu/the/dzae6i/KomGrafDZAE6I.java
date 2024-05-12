@@ -9,6 +9,7 @@ import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
 import java.awt.Stroke;
 import java.awt.image.BufferedImage;
+import java.awt.geom.Path2D;
 import java.io.File;
 import java.io.IOException;
 
@@ -154,8 +155,9 @@ public class KomGrafDZAE6I extends JFrame {
             );
 
             // Logo drawing contest
-            // Logo title
             int logo_section_x = (int) (CANVAS_HEIGHT / 2 + FONT_SIZE * 4);
+            int logo_height = 175;
+            // Logo title
             g2d.setColor(COLOR);
             g2d.setFont(title_font);
             g2d.drawString(
@@ -163,7 +165,7 @@ public class KomGrafDZAE6I extends JFrame {
                 10,
                 logo_section_x
             );
-            // Logo
+            // Logo circle
             int circle_radius = (int) (CANVAS_WIDTH / 20);
             Color logo_color = new Color(0, 100, 0);
             g2d.setColor(logo_color);
@@ -173,6 +175,22 @@ public class KomGrafDZAE6I extends JFrame {
                 2 * circle_radius,
                 2 * circle_radius
             );
+            // Logo triangle
+            Path2D.Double triangle = new Path2D.Double();
+            triangle.moveTo(
+                (CANVAS_WIDTH / 2) - circle_radius,
+                logo_section_x + logo_height / 2
+            );
+            triangle.lineTo(
+                (CANVAS_WIDTH / 2) + circle_radius,
+                logo_section_x + logo_height / 2
+            );
+            triangle.lineTo(
+                CANVAS_WIDTH / 2,
+                logo_section_x + logo_height
+            );
+            triangle.closePath();
+            g2d.fill(triangle);
 
             // Draw tabloid owner
             g2d.setColor(COLOR);
