@@ -8,8 +8,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
 import java.awt.Stroke;
-import java.awt.image.BufferedImage;
 import java.awt.geom.Path2D;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -191,6 +191,32 @@ public class KomGrafDZAE6I extends JFrame {
             );
             triangle.closePath();
             g2d.fill(triangle);
+            //Logo right wing
+            Stroke wing_stroke = new BasicStroke(
+                circle_radius / 2,
+                BasicStroke.CAP_ROUND,
+                BasicStroke.JOIN_MITER
+            );
+            g2d.setStroke(wing_stroke);
+            // Right wing
+            for (int i = 0; i < 3; i++) {
+                g2d.drawLine(
+                    (int) ((CANVAS_WIDTH / 2) - (circle_radius * 1.3)),
+                    (int) (logo_section_x + (circle_radius * i * 0.6) + (logo_height / 3)) + circle_radius,
+                    (int) ((CANVAS_WIDTH / 2) - (circle_radius * 14 / 2.5)),
+                    (int) (logo_section_x + (circle_radius * i * 0.6) + (logo_height / 3))
+                );
+            }
+            // Left wing
+            for (int i = 0; i < 3; i++) {
+                g2d.drawLine(
+                    (int) ((CANVAS_WIDTH / 2) + (circle_radius * 1.3)),
+                    (int) (logo_section_x + (circle_radius * i * 0.6) + (logo_height / 3)) + circle_radius,
+                    (int) ((CANVAS_WIDTH / 2) + (circle_radius * 14 / 2.5)),
+                    (int) (logo_section_x + (circle_radius * i * 0.6) + (logo_height / 3))
+                );
+            }
+            g2d.setStroke(previous_stroke);
 
             // Draw tabloid owner
             g2d.setColor(COLOR);
