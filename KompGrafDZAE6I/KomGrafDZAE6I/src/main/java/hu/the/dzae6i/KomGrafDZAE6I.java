@@ -98,17 +98,33 @@ public class KomGrafDZAE6I extends JFrame {
             // Separator lines
             Stroke previous_stroke = g2d.getStroke();
             g2d.setStroke(new BasicStroke(3));
+            // Title separator
             g2d.drawLine(
                 0,
                 (int) (FONT_SIZE * 2.6),
                 CANVAS_WIDTH,
                 (int) (FONT_SIZE * 2.6)
             );
+            // Latest news before separator
             g2d.drawLine(
                 0,
                 CANVAS_HEIGHT / 2,
                 CANVAS_WIDTH,
                 CANVAS_HEIGHT / 2
+            );
+            // Latest news after separator
+            g2d.drawLine(
+                0,
+                (int) (CANVAS_HEIGHT / 2 + FONT_SIZE * 3),
+                CANVAS_WIDTH,
+                (int) (CANVAS_HEIGHT / 2 + FONT_SIZE * 3)
+            );
+            // Owner separator
+            g2d.drawLine(
+                0,
+                (int) (CANVAS_HEIGHT * 0.95),
+                CANVAS_WIDTH,
+                (int) (CANVAS_HEIGHT * 0.95)
             );
             g2d.setStroke(previous_stroke);
 
@@ -130,6 +146,20 @@ public class KomGrafDZAE6I extends JFrame {
                 "- We have a new drone laboratory with 3D printers!",
                 10,
                 (int) (CANVAS_HEIGHT / 2 + FONT_SIZE * 2)
+            );
+            g2d.drawString(
+                "- Sign up for our new drone pilot engineer classes.",
+                10,
+                (int) (CANVAS_HEIGHT / 2 + FONT_SIZE * 2.5)
+            );
+
+            // Draw tabloid owner
+            g2d.setColor(COLOR);
+            g2d.setFont(issue_font);
+            g2d.drawString(
+                "Tabloid owner: " + TABLOID_OWNER,
+                10,
+                (int) (CANVAS_HEIGHT * 0.98)
             );
         }
         catch (FontFormatException | IOException exception) {
