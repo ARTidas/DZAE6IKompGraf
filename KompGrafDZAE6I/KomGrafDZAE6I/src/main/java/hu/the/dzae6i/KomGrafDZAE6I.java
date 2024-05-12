@@ -1,16 +1,18 @@
 package hu.the.dzae6i;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
-import java.awt.Font;
-import java.awt.FontFormatException;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
-import java.io.File;
-import java.io.IOException;
 
 public class KomGrafDZAE6I extends JFrame {
 
@@ -58,6 +60,20 @@ public class KomGrafDZAE6I extends JFrame {
                 (int) (FONT_SIZE * 2.5)
             );
 
+            // Draw background image
+            BufferedImage image = ImageIO.read(
+                new File(
+                    "KomGrafDZAE6I/src/main/java/images/logo_large.png"
+                )
+            );
+            g2d.drawImage(
+                image, 
+                (int) (0), 
+                (int) (FONT_SIZE * 2.5),
+                (int) (CANVAS_WIDTH),
+                (int) (CANVAS_HEIGHT * 0.4),
+                null
+            );
         }
         catch (FontFormatException | IOException exception) {
             exception.printStackTrace();
