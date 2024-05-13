@@ -48,13 +48,15 @@ public class KomGrafDZAE6I extends JFrame {
             Font custom_bold_font = Font.createFont(
                 Font.TRUETYPE_FONT,
                 new File(
-                    "KomGrafDZAE6I/src/main/java/hu/the/dzae6i/fonts/courier/CourierPrime-Bold.ttf"
+                    //"KomGrafDZAE6I/src/main/java/hu/the/dzae6i/fonts/courier/CourierPrime-Bold.ttf" // Linux path
+                    "KompGrafDZAE6I\\KomGrafDZAE6I\\src\\main\\java\\hu\\the\\dzae6i\\fonts\\courier\\CourierPrime-Bold.ttf" // Windows path
                 )
             );
             Font custom_font = Font.createFont(
                 Font.TRUETYPE_FONT,
                 new File(
-                    "KomGrafDZAE6I/src/main/java/hu/the/dzae6i/fonts/courier/CourierPrime-Regular.ttf"
+                    //"KomGrafDZAE6I/src/main/java/hu/the/dzae6i/fonts/courier/CourierPrime-Regular.ttf" // Linux path
+                    "KompGrafDZAE6I\\KomGrafDZAE6I\\src\\main\\java\\hu\\the\\dzae6i\\fonts\\courier\\CourierPrime-Regular.ttf" // Windows path
                 )
             );
             Font title_font = custom_bold_font.deriveFont((float) FONT_SIZE);
@@ -84,7 +86,8 @@ public class KomGrafDZAE6I extends JFrame {
             // Draw background image
             BufferedImage image = ImageIO.read(
                 new File(
-                    "KomGrafDZAE6I/src/main/java/images/logo_large.png"
+                    //"KomGrafDZAE6I/src/main/java/images/logo_large.png" // Linux path
+                    "KompGrafDZAE6I\\KomGrafDZAE6I\\src\\main\\java\\images\\logo_large.png"
                 )
             );
             g2d.drawImage(
